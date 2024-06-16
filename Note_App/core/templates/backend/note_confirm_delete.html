@@ -1,0 +1,14 @@
+{% extends 'core/home.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center mt-5">
+  <div class="text-center">
+      <h2 class="mb-4">Are you sure you want to delete "{{ note.title }}"?</h2>
+      <form method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Confirm</button>
+          <a href="{% url 'Home' %}" class="btn btn-secondary">Cancel</a>
+      </form>
+  </div>
+</div>
+{% endblock %}

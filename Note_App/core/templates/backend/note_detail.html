@@ -1,0 +1,36 @@
+{% extends 'core/home.html' %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card note-card bright-colors">
+      <div class="card-header text-center">{{ note.title|title }}</div>
+      <div class="card-body">
+        <h1 class="fs-5">{{ note.title }}</h1>
+        <p>{{ note.content }}</p>
+      </div>
+      <div class="card-footer text-center">
+        <a href="{% url 'Home' %}" class="btn btn-outline-primary btn-sm">Back</a>
+        <a href="{% url 'note_edit' pk=note.pk %}" class="btn btn-outline-success btn-sm">Edit</a>
+        <a href="{% url 'note_delete' pk=note.pk %}" class="btn btn-outline-danger btn-sm">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    // Function to generate random bright color
+    function getRandomBrightColor() {
+        var letters = '89ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 8)]; 
+        }
+        return color;
+    }
+
+    // Apply random bright color to the note card
+    document.querySelectorAll('.note-card').forEach(function(card) {
+        card.style.backgroundColor = getRandomBrightColor();
+    });
+</script>
+{% endblock %}
